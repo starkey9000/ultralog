@@ -1,22 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 
 class RunnerListContainer extends Component {
-    state = { users:[] }
-
-    componentDidMount(){
-        fetch('/users')
-        .then(res => res.json())
-        .then(users => this.setState({users}));
-    }
-
 
     render() {
         return (
               <div>
                  <h1>Runner List</h1>
                  <ul>
-                     {this.state.users.map(user =>
+                     {this.props.users.map(user =>
                         <li key={user.id}>{user.username}</li>
                      )}
                  </ul>
@@ -25,4 +18,8 @@ class RunnerListContainer extends Component {
     }
 }
 
-export default RunnerListContainer;
+const mapStateToProps = state => ({
+    users: state.users
+});
+
+export default connect(mapStateToProps)(RunnerListContainer);
