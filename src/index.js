@@ -4,31 +4,11 @@ import registerServiceWorker from './registerServiceWorker';
 import React, { Component } from 'react';
 import RunnerListContainer from './components/RunnerListContainer/RunnerListContainer';
 import { Grid, Row, Col, Clearfix } from 'react-bootstrap';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import configureStore from './configurestore';
 
-const initialState = {
-    users: []
-}
+const store = configureStore();
 
-function reducer(state = initialState, action){
-    switch(action.type){
-        case "FETCH_RUNNERS":
-            return{
-                users: [
-                    {id: 1, username: "Scott Starkey"},
-                    {id: 2, username: "Tina Starkey"},
-                    {id: 3, username: "Max Starkey"},
-                    {id: 4, username: "Hannah Starkey"},
-                ]
-            };
-        default:
-            return state;
-    }
-}
-
-const store = createStore(reducer);
-store.dispatch({ type: "FETCH_RUNNERS" })
 
 const App = () => (
     <Provider store={store}>
