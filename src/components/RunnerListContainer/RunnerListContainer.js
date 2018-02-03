@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import FontAwesome from 'react-fontawesome';
 import { fetchRunners } from '../../actions/index.js'
+import RunnerCardContainer from '../RunnerCardContainer/RunnerCardContainer';
+
+
 
 
 class RunnerListContainer extends Component {
@@ -10,15 +13,13 @@ class RunnerListContainer extends Component {
         this.props.dispatch( fetchRunners() );
     }
 
-
-
     render() {
 
         const { isLoading, showDetails, runnerDetails } = this.props;
-        console.log(runnerDetails);
+        //console.log(runnerDetails);
 
         return (
-              <div>
+              <div style={{backgroundColor: '#ccc'}}>
                   <h1>Runner List</h1>
                   {isLoading && (
                       <h2>
@@ -26,11 +27,12 @@ class RunnerListContainer extends Component {
                       </h2>
                   )}
                   {!isLoading && showDetails && runnerDetails && (
-                      <ul>
-                          {this.props.runnerDetails.map(runner =>
-                             <li key={runner.id}>{runner.username}</li>
-                          )}
-                      </ul>
+                      <RunnerCardContainer info={runnerDetails}/>
+                    //   <ul>
+                    //       {this.props.runnerDetails.map(runner =>
+                    //          <li key={runner.id}>{runner.username}</li>
+                    //       )}
+                    //   </ul>
                   )}
               </div>
         );
