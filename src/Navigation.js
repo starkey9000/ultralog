@@ -6,12 +6,15 @@ import Stuff from "./Stuff";
 import Contact from "./Contact";
 
 
-class App extends Component{
+
+
+
+class Navigation extends Component{
     render(){
         return(
             <HashRouter>
                 <div>
-                    <h1>Ultralog</h1>
+                    <h1>Run Harford Ultralog</h1>
                     <ul className="header">
                         <li><NavLink to="/Home">Home</NavLink></li>
                         <li><NavLink to="/stuff">Stuff</NavLink></li>
@@ -29,4 +32,4 @@ class App extends Component{
     }
 }
 
-export default App;
+export default Navigation;
